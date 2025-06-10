@@ -40,6 +40,36 @@ Example of layout:
 
 ![image](https://github.com/user-attachments/assets/182e8107-69a6-46fa-9666-1daa98faa2be)
 
+## Initial thoughts on requirements as Angular Developer (Me =D)
+### Documentation
+*To document this I would use JSONDoc format for every method. Methods that contain business logic should include also Aceptance criteria information.
+A changelog should be created following changes described on every version. Also [Compodoc](https://www.npmjs.com/package/@compodoc/compodoc) may help on complex scenarios.*
+
+### Web Standards
+*Even on a simple scenarios I preffer to use Domain Drive Design principles on every project. In spite of being more a Backend approach, it bring some advantages to Frontend i.e: define Data Transfers Object for models required to communicate with Endpoints and keep them separate from real "Domain Object" that will be used to represent this data into the UI.
+Regarding project folder structure I always follow angular convention (https://angular.dev/style-guide)*
+
+### Test Coverage
+*Current Angular version should use Jest instead of Jasmine. I would create at least one test for every method. If the method implements some Acceptance Criteria, all scenarios should be covered.
+E2E Testing: I will use Cypress and create at least minimun ammount of tests for happy paths and Acceptance Criteria scenarios.*
+
+### Design and Responsible
+*I recently discovered PrimeNg and still learning about this libraries. Seems to have some issues on complex UI components like Toast, but the library classes works pretty well and are easy to read (grid system follows same convention as Bootstrap). For responsiveness, if posible I preffer to use new display:grid css native styling: (https://www.w3schools.com/css/css_grid.asp).*
+
+### Extra Mile Bonus
+- *Application logging and metrics: Not big experience here more than basic Google Analytic usage and the create of custom Logger services.*
+- *CI/CD: again, no experiences configuring CI/CD. Most of the time I consume or follow the required steps to make deployements but rely on a DevOps mate =P.*
+- *Pattern: Redux like state management is a must =). There is a nice implementation using signals presented by Deborah Kurata (https://www.youtube.com/watch?v=rHQa4SpekaA&ab_channel=DeborahKurata). This keeps the component responsibilities as low as possible and rely on computed signals that are directly referenced by the service to update views.*
+- *i18n: little experience here but latest I tried was [Transloco] (https://github.com/jsverse/transloco).*
+
+## Test Approach
+  - *1. First step will include create the main components and form page using PrimeNg.*
+  - *2. Then create a ReactiveForm to connect the UI fields (I was aksed to create custom validator).*
+  - *3. Create a State Service which stores the state of the form and exposed computed signals for every slice.*
+  - *4. Create a component table that list the created user. It will be linked to a computed signal in the State Service (Array of users).*
+  - *5. Create a method that adds a new user into the state (Array of users) at State Service level that will be called by the component when "Save" button is pressed (ngSubmit)*
+  - *6. Add any extra validation like table items limit.*
+  - *7. Create unit tests for Custom Validators and Submit method and basic e2e to tests for happy paths.*
 
 
 ## Installation
